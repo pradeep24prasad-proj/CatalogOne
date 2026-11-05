@@ -47,45 +47,36 @@ CatalogHub is an enquiry-based native Android product catalogue application buil
 
 ---
 
-## 🚀 Quick Setup & Local Execution (< 10 Mins)
+## 🚀 Quick Setup & Execution (< 5 Minutes)
 
-### Prerequisites
-- Node.js (v18+)
-- Docker & Docker Compose
-- Android Studio / Android Emulator / Physical Android Device
+### Step 1: Start Backend Server
 
-### 1. Run Backend via Docker Compose (Recommended)
-```bash
-# From project root
-docker-compose up --build -d
-```
-- **Backend API**: `http://localhost:3000` (from host/Postman) or `http://10.0.2.2:3000` / `http://127.0.0.1:3000` (from Android Emulator / Device).
-- **Mailpit Web UI**: `http://localhost:8025` (View dispatched enquiry emails in real-time).
-
-### 2. Run Backend Standalone (Alternative)
+Open Terminal and run:
 ```bash
 cd backend
 npm install
-npm run build
-npm test # Executes Jest tests
 npm start
 ```
+*(Backend server will listen on `http://localhost:3000`)*
 
-### 3. Run Android App
+---
 
-#### Option A: Running on Android Emulator (Standard for Recruiter Review)
-1. Open the project in Android Studio.
+### Step 2: Run Android App
+
+#### Option A: Android Emulator (Standard for Recruiter Review - Zero Config)
+1. Open the project in **Android Studio**.
 2. Launch an **Android Emulator**.
-3. Click **Run** (`app`).
+3. Click **Run** (`app`).  
+*(The app connects automatically via Android's built-in `10.0.2.2:3000` loopback IP).*
 
-#### Option B: Running on a Physical Android Device (USB Debugging)
-When testing on a real physical Android device connected via USB:
-1. Enable **USB Debugging** on the device.
-2. Forward local backend port 3000 to the connected device via ADB:
+#### Option B: Real Physical Android Phone (USB Debugging)
+If testing on a physical phone connected to your computer via USB:
+1. Connect physical phone via USB with **USB Debugging** enabled.
+2. In Terminal, run ADB port reverse once:
    ```bash
    adb reverse tcp:3000 tcp:3000
    ```
-3. Run the app from Android Studio on your physical device.
+3. Click **Run** in Android Studio on your physical phone.
 
 ---
 
@@ -100,7 +91,7 @@ Technical recruiters and code reviewers test the enquiry email flow using either
 4. You will see both the **Admin Notification Email** and **Customer Confirmation Email** delivered in real-time to the Mailpit inbox.
 
 ### Method 2: Terminal Console Log Fallback (Standalone `npm start`)
-If running without Docker:
+If running standalone without Docker:
 1. Run `cd backend && npm start`.
 2. Submit an enquiry from the Android application.
 3. The backend terminal outputs the dispatched email receipt logs:
