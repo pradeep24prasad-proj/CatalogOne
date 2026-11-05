@@ -24,7 +24,8 @@ export class SmtpEmailProvider implements IEmailProvider {
 
   async sendEnquiryNotification(enquiry: EnquiryRequest): Promise<boolean> {
     try {
-      const mailOptions = {
+      // 1. Admin Notification Email
+      const adminMailOptions = {
         from: env.SMTP_FROM,
         to: env.NOTIFICATION_EMAIL,
         subject: `New Product Enquiry: ${enquiry.productTitle}`,
@@ -57,11 +58,47 @@ ${enquiry.message}
         `.trim()
       };
 
-      await this.transporter.sendMail(mailOptions);
+      // 2. Customer Confirmation Email
+      const customerMailOptions = {
+        from: env.SMTP_FROM,
+        to: enquiry.email,
+        subject: `Enquiry Confirmation: ${enquiry.productTitle}`,
+        text: `
+Dear ${enquiry.customerName},
+
+Thank you for contacting CatalogHub! We have received your enquiry regarding "${enquiry.productTitle}".
+
+Enquiry Summary:
+- Product: ${enquiry.productTitle}
+- Phone: ${enquiry.phone}
+- Message: ${enquiry.message}
+
+Our sales team will review your enquiry and contact you shortly.
+
+Best regards,
+CatalogHub Team
+        `.trim(),
+        html: `
+<h3>Thank You for Your Enquiry, ${enquiry.customerName}!</h3>
+<p>We have received your enquiry regarding <strong>${enquiry.productTitle}</strong>.</p>
+<p>Our team is reviewing your message and will reach out to you shortly.</p>
+<hr />
+<h4>Your Enquiry Summary:</h4>
+<p><strong>Product:</strong> ${enquiry.productTitle}</p>
+<p><strong>Phone:</strong> ${enquiry.phone}</p>
+<p><strong>Message:</strong> ${enquiry.message}</p>
+<br />
+<p>Best regards,<br /><strong>CatalogHub Team</strong></p>
+        `.trim()
+      };
+
+      await this.transporter.sendMail(adminMailOptions);
+      await this.transporter.sendMail(customerMailOptions);
       return true;
     } catch (error) {
       console.warn('SMTP Email sending failed, falling back to mock logging:', error);
-      console.log(`📧 [Enquiry Received] To: ${env.NOTIFICATION_EMAIL} | Customer: ${enquiry.customerName} (${enquiry.email}) | Product: ${enquiry.productTitle}`);
+      console.log(`📧 [Admin Notification Logged] To: ${env.NOTIFICATION_EMAIL} | Customer: ${enquiry.customerName} (${enquiry.email}) | Product: ${enquiry.productTitle}`);
+      console.log(`📧 [Customer Confirmation Logged] To: ${enquiry.email} | Subject: Enquiry Confirmation: ${enquiry.productTitle}`);
       return true;
     }
   }
