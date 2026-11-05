@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CatalogOne</string>
+    <string name="catalog_hub_title">CatalogHub</string>
+    <string name="catalog_hub_subtitle">Browse &amp; Enquire Premium Products</string>
+    <string name="search_hint">Search products…</string>
+    <string name="browse_categories">Browse Categories</string>
+    <string name="top_rated_products">Top Rated Products</string>
+    <string name="top_rated_subtitle">Our handpicked featured products</string>
+    <string name="featured_badge">Featured %1$d</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="browse_all">Browse All</string>
+    <string name="explore_products">Explore products</string>
+    <string name="all_products">All Products</string>
+    <string name="back_button">← Back</string>
+</resources>
