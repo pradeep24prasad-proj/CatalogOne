@@ -4,7 +4,7 @@ CatalogHub is an enquiry-based native Android product catalogue application buil
 
 ---
 
-## 🌟 Key Features
+##  Key Features
 
 1. **Home Screen**: App header, search bar, horizontally scrollable category chips, top-rated featured products grid, and "Browse All" navigation.
 2. **Category Screen**: Dynamic category loading with 2-column rating-sorted product grid.
