@@ -2,7 +2,7 @@ package com.example.catalogone.presentation.search
 
 import android.view.LayoutInflater
 import android.view.inputmethod.EditorInfo
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -30,7 +30,7 @@ fun SearchScreen(
     val uiState by viewModel.uiState.collectAsState()
 
     AndroidView(
-        modifier = modifier.statusBarsPadding(),
+        modifier = modifier.systemBarsPadding(),
         factory = { context ->
             val binding = ScreenSearchBinding.inflate(LayoutInflater.from(context))
 

@@ -1,7 +1,7 @@
 package com.example.catalogone.presentation.enquiry
 
 import android.view.LayoutInflater
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
@@ -15,7 +15,7 @@ fun ThankYouScreen(
     modifier: Modifier = Modifier
 ) {
     AndroidView(
-        modifier = modifier.statusBarsPadding(),
+        modifier = modifier.systemBarsPadding(),
         factory = { context ->
             val binding = ScreenThankYouBinding.inflate(LayoutInflater.from(context))
 

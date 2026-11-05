@@ -1,7 +1,7 @@
 package com.example.catalogone.presentation.enquiry
 
 import android.view.LayoutInflater
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -35,7 +35,7 @@ fun EnquiryScreen(
     }
 
     AndroidView(
-        modifier = modifier.statusBarsPadding(),
+        modifier = modifier.systemBarsPadding(),
         factory = { context ->
             val binding = ScreenEnquiryBinding.inflate(LayoutInflater.from(context))
 

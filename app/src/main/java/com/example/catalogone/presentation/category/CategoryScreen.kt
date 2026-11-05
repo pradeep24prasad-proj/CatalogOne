@@ -1,7 +1,7 @@
 package com.example.catalogone.presentation.category
 
 import android.view.LayoutInflater
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -27,7 +27,7 @@ fun CategoryScreen(
     val uiState by viewModel.uiState.collectAsState()
 
     AndroidView(
-        modifier = modifier.statusBarsPadding(),
+        modifier = modifier.systemBarsPadding(),
         factory = { context ->
             val binding = ScreenCategoryBinding.inflate(LayoutInflater.from(context))
 
