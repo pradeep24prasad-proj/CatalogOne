@@ -80,9 +80,9 @@ If testing on a physical phone connected to your computer via USB:
 
 ---
 
-## 📧 How Reviewers & Recruiters Test the Email Enquiry Flow
+## 📧 Test the Email Enquiry Flow
 
-Technical recruiters and code reviewers test the enquiry email flow using either of two standard methods:
+reviewers can test the enquiry email flow using either of two standard methods:
 
 ### Method 1: Mailpit Web UI (Docker Compose)
 1. Run `docker-compose up -d` from the project root.
