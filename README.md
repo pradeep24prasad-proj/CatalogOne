@@ -89,6 +89,28 @@ When testing on a real physical Android device connected via USB:
 
 ---
 
+## 📧 How Reviewers & Recruiters Test the Email Enquiry Flow
+
+Technical recruiters and code reviewers test the enquiry email flow using either of two standard methods:
+
+### Method 1: Mailpit Web UI (Docker Compose)
+1. Run `docker-compose up -d` from the project root.
+2. Submit an enquiry from the Android application.
+3. Open **`http://localhost:8025`** in any web browser.
+4. You will see both the **Admin Notification Email** and **Customer Confirmation Email** delivered in real-time to the Mailpit inbox.
+
+### Method 2: Terminal Console Log Fallback (Standalone `npm start`)
+If running without Docker:
+1. Run `cd backend && npm start`.
+2. Submit an enquiry from the Android application.
+3. The backend terminal outputs the dispatched email receipt logs:
+   ```text
+   📧 [Admin Notification Logged] To: admin@cataloghub.com | Customer: Jane Doe (jane@example.com) | Product: Silicon Power 256GB SSD
+   📧 [Customer Confirmation Logged] To: jane@example.com | Subject: Enquiry Confirmation: Silicon Power 256GB SSD
+   ```
+
+---
+
 ## 🧪 Running Tests
 
 ### Backend Tests
