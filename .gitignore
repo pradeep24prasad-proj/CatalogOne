@@ -21,8 +21,7 @@ output-metadata.json
 *.iml
 .gradle
 /local.properties
-.idea/
-.DS_Store
+.idea/.DS_Store
 /build
 /captures
 .externalNativeBuild
