@@ -6,12 +6,12 @@ CatalogHub is an enquiry-based native Android product catalogue application buil
 
 ## 🌟 Key Features
 
-1. **Home Screen**: App header, search bar, horizontally scrollable category chips, and top 5 featured products sorted by customer rating.
-2. **Category Screen**: Dynamic category loading with rating-sorted product listings.
+1. **Home Screen**: App header, search bar, horizontally scrollable category chips, top-rated featured products grid, and "Browse All" navigation.
+2. **Category Screen**: Dynamic category loading with 2-column rating-sorted product grid.
 3. **Backend Search**: Real-time keyword search against title, description, and category.
 4. **Product Details Screen**: High-res image display, price, rating, category, description, and prominent "Enquire Now" action.
-5. **Enquiry Form**: Validation for mandatory fields (Customer Name, Email format, Phone, Message) and SMTP email notification dispatch.
-6. **Thank-You Screen**: Receipt confirmation screen following successful email delivery.
+5. **Enquiry Form**: Form validation (Customer Name, Email format, Phone, Message) and SMTP email notification dispatch.
+6. **Thank-You Screen**: Confirmation screen following successful enquiry submission.
 
 ---
 
@@ -38,7 +38,7 @@ CatalogHub is an enquiry-based native Android product catalogue application buil
 
 ## 🛠 Tech Stack
 
-- **Android**: Kotlin, Jetpack Compose, MVVM + Clean Architecture, Navigation Compose, Coroutines + StateFlow, Hilt DI, Retrofit + OkHttp, KotlinX Serialization, Coil.
+- **Android**: Kotlin, Jetpack Compose, ViewBinding, MVVM + Clean Architecture, Navigation Compose, Coroutines + StateFlow, Hilt DI, Retrofit + OkHttp, KotlinX Serialization, Coil.
 - **Backend**: Node.js, TypeScript, Express.js, Zod, Nodemailer.
 - **Email**: Mailpit (local SMTP mock server).
 - **Testing**:
@@ -52,14 +52,14 @@ CatalogHub is an enquiry-based native Android product catalogue application buil
 ### Prerequisites
 - Node.js (v18+)
 - Docker & Docker Compose
-- Android Studio / Android Emulator
+- Android Studio / Android Emulator / Physical Android Device
 
 ### 1. Run Backend via Docker Compose (Recommended)
 ```bash
 # From project root
 docker-compose up --build -d
 ```
-- **Backend API**: `http://localhost:3000` (from host/Postman) or `http://10.0.2.2:3000` (from Android Emulator).
+- **Backend API**: `http://localhost:3000` (from host/Postman) or `http://10.0.2.2:3000` / `http://127.0.0.1:3000` (from Android Emulator / Device).
 - **Mailpit Web UI**: `http://localhost:8025` (View dispatched enquiry emails in real-time).
 
 ### 2. Run Backend Standalone (Alternative)
@@ -72,9 +72,20 @@ npm start
 ```
 
 ### 3. Run Android App
-1. Open project in Android Studio.
-2. Ensure Android Emulator is running.
+
+#### Option A: Running on Android Emulator (Standard for Recruiter Review)
+1. Open the project in Android Studio.
+2. Launch an **Android Emulator**.
 3. Click **Run** (`app`).
+
+#### Option B: Running on a Physical Android Device (USB Debugging)
+When testing on a real physical Android device connected via USB:
+1. Enable **USB Debugging** on the device.
+2. Forward local backend port 3000 to the connected device via ADB:
+   ```bash
+   adb reverse tcp:3000 tcp:3000
+   ```
+3. Run the app from Android Studio on your physical device.
 
 ---
 
@@ -95,11 +106,10 @@ npm test
 
 ## 📡 API Contracts
 
+- `GET /api/products` - Returns all products.
 - `GET /api/products/featured` - Returns top 5 top-rated products.
 - `GET /api/categories` - Returns available product categories.
 - `GET /api/categories/:category/products` - Category products sorted by rating descending.
 - `GET /api/products?search=phone` - Backend keyword search.
 - `GET /api/products/:id` - Single product details.
 - `POST /api/enquiries` - Accepts enquiry payload, validates with Zod, dispatches notification email via SMTP.
-# CatalogOne
-CatalogHub is a native Android product catalogue app built with Kotlin, XML and Jetpack Compose. Features include product browsing, category filtering, search, top-rated products, product details and customer enquiries, powered by a Node.js backend.
