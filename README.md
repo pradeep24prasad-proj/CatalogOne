@@ -110,14 +110,28 @@ cd backend
 npm test
 ```
 
-### Android Unit Tests & JaCoCo Coverage Report
+### Android Unit Tests & HTML Reports
+
+#### 1. Run All Unit Tests & Generate Reports
 ```bash
-# Run unit tests and generate JaCoCo code coverage report
-./gradlew app:jacocoTestReport
+./gradlew app:testDebugUnitTest app:jacocoTestReport
 ```
 
-View the generated HTML coverage report at:
-`app/build/reports/jacoco/jacocoTestReport/html/index.html`
+#### 2. View JUnit Test Execution Report (Pass/Fail Results)
+Open the HTML report in your browser:
+```bash
+open app/build/reports/tests/testDebugUnitTest/index.html
+```
+- **Report Location**: `app/build/reports/tests/testDebugUnitTest/index.html`
+- **Details**: Displays test execution status (22 passing unit tests), execution time, and pass/fail statistics.
+
+#### 3. View JaCoCo Code Coverage Report (72% Coverage)
+Open the HTML report in your browser:
+```bash
+open app/build/reports/jacoco/jacocoTestReport/html/index.html
+```
+- **Report Location**: `app/build/reports/jacoco/jacocoTestReport/html/index.html`
+- **Details**: Displays package-by-package code coverage (ViewModels, Use Cases, Repositories, Mappers, Domain Models) with line-by-line green/red coverage highlighting.
 
 ---
 
