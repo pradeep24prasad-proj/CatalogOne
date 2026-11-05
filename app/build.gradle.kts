@@ -75,7 +75,17 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "**/*_HiltModules*.class",
         "**/Hilt_*.*",
         "**/*ComposableSingletons*.*",
-        "**/databinding/*Binding.class"
+        "**/databinding/*Binding.class",
+        // Exclude Android UI & Framework boilerplate (measured via UI/Instrumentation tests)
+        "**/*Screen*.*",
+        "**/*Adapter*.*",
+        "**/*ViewHolder*.*",
+        "**/navigation/*.*",
+        "**/ui/theme/*.*",
+        "**/di/*.*",
+        "**/MainActivity*.*",
+        "**/CatalogApplication*.*",
+        "**/*Dto*.*"
     )
 
     val javaTree = fileTree("${project.layout.buildDirectory.get()}/intermediates/javac/debug/compileDebugJavaWithJavac/classes") {
