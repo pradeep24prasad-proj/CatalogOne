@@ -110,10 +110,14 @@ cd backend
 npm test
 ```
 
-### Android Unit Tests
+### Android Unit Tests & JaCoCo Coverage Report
 ```bash
-./gradlew app:testDebugUnitTest
+# Run unit tests and generate JaCoCo code coverage report
+./gradlew app:jacocoTestReport
 ```
+
+View the generated HTML coverage report at:
+`app/build/reports/jacoco/jacocoTestReport/html/index.html`
 
 ---
 
