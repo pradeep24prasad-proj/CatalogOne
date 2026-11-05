@@ -8,32 +8,23 @@ local.properties
 
 # Log/OS Files
 *.log
+.DS_Store
 
-# Android Studio generated files and folders
+# Android Studio / IntelliJ generated files and folders
+.idea/
 captures/
 .externalNativeBuild/
 .cxx/
 *.aab
 *.apk
 output-metadata.json
-
-# IntelliJ
 *.iml
-.gradle
-/local.properties
-.idea/.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
+
+# Node / Backend
 node_modules/
 backend/node_modules/
 backend/dist/
 backend/.env
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
 
 # Keystore files
 *.jks
