@@ -47,7 +47,7 @@ CatalogHub is an enquiry-based native Android product catalogue application buil
 
 ---
 
-## 🚀 Quick Setup & Execution (< 5 Minutes)
+## Quick Setup & Execution (< 5 Minutes)
 
 ### Step 1: Start Backend Server
 
